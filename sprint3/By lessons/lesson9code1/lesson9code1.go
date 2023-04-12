@@ -14,7 +14,12 @@ func keyForCard(card int) []int {
 func main() {
     cards := []int{2, 3, 7}
     sort.Slice(cards, func(i, j int) bool {
-        return keyForCard(cards[i])[0] < keyForCard(cards[j])[0]
+        keyI := keyForCard(cards[i])
+        keyJ := keyForCard(cards[j])
+        if keyI[0] == keyJ[0] {
+            return keyI[1] < keyJ[1]
+        } 
+        return keyI[0] < keyJ[0]
     })
     fmt.Println(cards)
 }
