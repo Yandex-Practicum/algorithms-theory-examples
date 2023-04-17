@@ -1,15 +1,6 @@
-void insert_node(Node* root, int key) {
-  if (key < root->key) {
-    if (root->left == nullptr) {
-      root->left = new Node(key);
-    } else {
-      insert_node(root->left, key);
-    }
-  } else {
-    if (root->right == nullptr) {
-      root->right = new Node(key);
-    } else {
-      insert_node(root->right, key);
-    }
+void print_forward(Node* vertex) {
+  std::cout << vertex->value << std::endl;
+  for (Node* child : vertex->children) {
+    print_forward(child);
   }
 }

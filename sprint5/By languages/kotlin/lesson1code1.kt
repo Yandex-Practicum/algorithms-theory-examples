@@ -1,1 +1,0 @@
-class Node(var obj: Any, var children: MutableList<Node> = mutableListOf())

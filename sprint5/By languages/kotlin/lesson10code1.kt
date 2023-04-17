@@ -1,19 +1,17 @@
-fun heapsort(array: List<Int>) : List<Int> {
-  // Создадим пустую бинарную кучу.
-  var heap = mutableListOf<Int>()
-  
-  // Вставим в неё по одному все элементы массива, сохраняя свойства кучи.
-  for (item in array) {
-    heap_add(heap, item)   // код для heap_add можно посмотреть в прошлом уроке
-  }
-  
-  // Будем извлекать из неё наиболее приоритетные элементы, удаляя их из кучи.
-  var sortedArray = mutableListOf<Int>()
-  var i = 0
-  while (heap.isNotEmpty()) {
-    val max = pop_max(heap) 
-    sortedArray.add(max)
-    i += 1
-  }
-  return sortedArray
+fun heap_add(heap: ArrayList<Int>, key: Int) {
+    val index = heap.size + 1
+    heap[index] = key
+    sift_up(heap, index)
+}
+
+fun sift_up(heap: ArrayList<Int>, index: Int) {
+    if (index == 1) return
+
+    val parentIndex = index / 2
+    if (heap[parentIndex] < heap[index]) {
+        val temp = heap[parentIndex]
+        heap[parentIndex] = heap[index]
+        heap[index] = temp
+        sift_up(heap, parentIndex)
+    }
 }
