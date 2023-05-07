@@ -1,29 +1,18 @@
-public static List<int> Search(string p, string text)
+int N = s.Length;
+int[] π = new int[N];
+
+for (int i = 1; i < N; i++)
 {
-    List<int> result = new List<int>();
-    string s = p + "#" + text;
-    int[] π = new int[p.Length];
-    int π_prev = 0;
-    for (int i = 1; i <= s.Length; i++)
+    string substring = s.Substring(0, i);
+    for (int k = i - 1; k >= 0; k--)
     {
-        int k = π_prev;
-        while (k > 0 && s[k - 1] != s[i - 1])
-        {
-            k = π[k - 1];
-        }
-        if (s[k - 1] == s[i - 1])
-        {
-            k++;
-        }
-        if (i <= p.Length)
+        string prefix = substring.Substring(0, k);
+        string suffix = substring.Substring(i - k, k);
+        if (prefix == suffix)
         {
             π[i - 1] = k;
-        }
-        π_prev = k;
-        if (k == p.Length)
-        {
-            result.Add(i - 2 * p.Length);
+            break;
         }
     }
-    return result;
 }
+

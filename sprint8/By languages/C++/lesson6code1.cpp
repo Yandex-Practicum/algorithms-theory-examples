@@ -1,27 +1,14 @@
-#include <iostream>
-#include <vector>
-#include <string>
+int N = s.length();
+vector<int> π(N, 0);
 
-std::vector<int> search(std::string p, std::string text) {
-    std::vector<int> result;
-    std::string s = p + '#' + text;
-    std::vector<int> π(p.length(), 0);
-    int π_prev = 0;
-    for (int i = 1; i < s.length(); i++) {
-        int k = π_prev;
-        while (k > 0 && s[k] != s[i]) {
-            k = π[k - 1];
-        }
-        if (s[k] == s[i]) {
-            k += 1;
-        }
-        if (i < p.length()) {
-            π[i] = k;
-        }
-        π_prev = k;
-        if (k == p.length()) {
-            result.push_back(i - 2 * p.length());
+for (int i = 1; i < N; i++) {
+    string substring = s.substr(0, i);
+    for (int k = i - 1; k >= 0; k--) {
+        string prefix = substring.substr(0, k);
+        string suffix = substring.substr(i - k, i);
+        if (prefix == suffix) {
+            π[i-1] = k;
+            break;
         }
     }
-    return result;
 }
