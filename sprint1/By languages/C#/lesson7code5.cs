@@ -7,7 +7,7 @@ public static bool[] EratosthenesEffective(int n)
     {
         if (numbers[num])
         {
-            for (int j = тгь * num; j <= n; j += num)
+            for (int j = num * num; j <= n; j += num)
             {
                 numbers[j] = false;
             }
