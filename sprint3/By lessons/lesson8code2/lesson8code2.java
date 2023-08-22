@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Main {
     static int[] digit_lengths = {4, 4, 3, 3, 6, 4, 5, 4, 6, 6}; // длины слов «ноль», «один»,...
@@ -23,7 +24,8 @@ public class Main {
 
     public static void main(String[] args) {
         int[] cards = {3, 7, 9, 2, 3};
-        insertion_sort_by_comparator(cards, Main::is_first_card_weaker);
+        Comparator<Integer> comparator = (card1, card2) -> Integer.compare(card1, card2);
+        insertion_sort_by_comparator(cards, comparator);
         System.out.println(Arrays.toString(cards));
     }
 }
