@@ -4,6 +4,6 @@ fun bucket(fruit: String): Int {
         "яблоко" -> 0
         "слива"  -> 1
         "груша"  -> 2
-        else -> throw IllegalArgumentException("Unknown fruit")
+        else -> throw IllegalArgumentException("Неизвестный фрукт")
     }
 }
